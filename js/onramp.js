@@ -526,7 +526,7 @@ function updateSim(){
 
 
     ramp.calcAccelerations();  
-    ramp.updateSpeedPositions("MainRoad");
+    ramp.updateSpeedPositions("Ramp");
     //ramp.updateBCdown();
     ramp.updateBCup(qOn,dt); // argument=total inflow
 
