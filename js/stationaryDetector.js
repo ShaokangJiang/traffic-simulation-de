@@ -86,7 +86,7 @@ stationaryDetector.prototype.reset=function(){
 
 
 stationaryDetector.prototype.display=function(textsize){
-    //console.log("in stationaryDetector.display(textsize)");
+    console.log("in stationaryDetector.display(textsize)");
  
   ctx.font=textsize+'px Arial';
 
@@ -95,8 +95,7 @@ stationaryDetector.prototype.display=function(textsize){
   var speedStr="Speed: "+((this.historyFlow[this.iAggr]>0)
 			  ? Math.round(3.6*this.historySpeed[this.iAggr])
 			  : "--")
-	+" km/h";
- 
+	+" km/h"; 
 
     var phi=this.road.get_phi(this.u);
     var cphi=Math.cos(phi);
@@ -111,6 +110,8 @@ stationaryDetector.prototype.display=function(textsize){
     var boxWidth=8.2*textsize;
     var boxHeight=2.4*textsize;
 
+	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
+	"("+xPixCenter+","+yPixCenter+")"+ "\n" +flowStr + speedStr;
     // the detector line
 
     var detLineWidth=0.2;    // [m]
