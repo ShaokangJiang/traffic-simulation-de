@@ -2165,7 +2165,7 @@ road.prototype.updateSpeedPositions=function(){
     if(this.isRing &&(this.veh[i].u>this.roadLen)){
       this.veh[i].u -= this.roadLen;
     }
-document.getElementById("testarea_1").value = document.getElementById("testarea_1").value+ "\n" +"id: "+ i + "Speed: "+ this.veh[i].speed + "lane" + this.veh[i].lane;
+document.getElementById("testarea_1").value = document.getElementById("testarea_1").value+ "\n"+ "Time: "+ document.getElementById("time_exchange").value +" id: "+ i + "Speed: "+ this.veh[i].speed + "lane" + this.veh[i].lane;
   }
 
   this.sortVehicles(); // positional update may have disturbed order

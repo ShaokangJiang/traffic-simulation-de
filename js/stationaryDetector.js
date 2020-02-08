@@ -113,7 +113,7 @@ stationaryDetector.prototype.display=function(textsize){
     var boxWidth=8.2*textsize;
     var boxHeight=2.4*textsize;
 
-    var loc = xPixCenter+","+yPixCenter;
+    var loc = xPixCenter.toFixed(3)+","+yPixCenter.toFixed(3);
     
 	if(this.lastIAggr != this.iAggr){
 		this.mycars.splice(0,this.mycars.length);
@@ -123,7 +123,7 @@ stationaryDetector.prototype.display=function(textsize){
 	if(this.mycars.indexOf(loc) == -1){
 
 	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
-	"("+loc+")"+ "\n" +flowStr + speedStr+ "this.iAggr:"+this.iAggr;
+	"\n"+ "Time: "+ document.getElementById("time_exchange").value+ " "+"("+loc+")" +flowStr+" " + speedStr;
 	this.mycars.push(loc);
 	}
 		// the detector line

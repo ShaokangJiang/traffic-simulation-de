@@ -12,4 +12,5 @@ function displayTime(time,textsize){
     ctx.fillRect(timeStr_xlb,timeStr_ylb-timeStr_height,timeStr_width,timeStr_height);
     ctx.fillStyle="rgb(0,0,0)";
     ctx.fillText(timeStr, timeStr_xlb+0.2*textsize, timeStr_ylb-0.2*textsize);
+    document.getElementById("time_exchange").value = Math.round(10*time)/10;
 }
