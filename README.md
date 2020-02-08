@@ -7,7 +7,8 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
 - clean file not need
 - add download function
 - optimize memory usage
-<--put it from textbox to another area or use new data structures to store data-->
+
+<!--put it from textbox to another area or use new data structures to store data-->
 
 ## Running the Simulation
 
