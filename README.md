@@ -3,7 +3,7 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
 
 ## TODO
 - direction of vehicles
-- find appropriate way to store vehicle related value.
+- find appropriate way to store vehicle related value.<!--calculate x y location in road.js-->
 - clean file not need
 - add download function
 - optimize memory usage
