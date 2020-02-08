@@ -4,6 +4,8 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
 ## TODO
 - direction of vehicles
 - find appropriate way to store vehicle related value.
+- clean file not need
+- add download function
 
 ## Running the Simulation
 
