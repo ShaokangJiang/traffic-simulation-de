@@ -134,8 +134,8 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
     // lane or v is transversal coordinate
 
   this.veh=[];
-  this.lastTime = -10;
-  this.waitTime = 30;
+  this.lastTime = -5;
+  this.waitTime = 5;
   this.textarea = [];
   this.initRegularVehicles(densInitPerLane,fracTruck);
 /*
@@ -237,8 +237,8 @@ road.prototype.initRegularVehicles=function(densityPerLane,fracTruck){
   var nVehOld=this.veh.length;
   var vehPlus=[];
   var iveh=0;
-	  this.lastTime = -10;         
-	this.waitTime = 30; 
+	  this.lastTime = -5;         
+	this.waitTime = 5; 
 	this.textarea = [];
   for(var i=0; i<nvehPlus; i++){
 
@@ -2173,7 +2173,7 @@ road.prototype.updateSpeedPositions=function(rType){
     }
 	  var a = document.getElementById("time_exchange").value;
 
-	  this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ i + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
+	  this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
 	 if(a-this.lastTime>this.waitTime){ 
 	  document.getElementById("testarea_1").value += this.textarea.toString();
 	this.textarea.length = 0;
