@@ -331,7 +331,7 @@ TrafficObjects.prototype.draw=function(){
       // =>correct occlusion effect
       
       var distCenter=0.5*crossingLineLength+0.6*road.laneWidth;
-      var v=(cphi>0) ? -distCenter : distCenter; // [m]
+      var v=(cphi>0) ? -distCenter : distCenter; // [m] 
 
       if(this.active_drawTopSign){ // draw active sign above the road
         xPix=xCenterPix+scale*v*sphi;  // + left if cphi>0

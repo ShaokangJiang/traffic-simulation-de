@@ -28,7 +28,8 @@ function stationaryDetector(road,u,dtAggr){
     }
 
     // initializing macroscopic records
-
+	this.lastIAggr = -1;
+this.mycars=[];
     this.iAggr=0;
     this.historyFlow=[];
     this.historySpeed=[];
@@ -75,7 +76,9 @@ stationaryDetector.prototype.update=function(time,dt){
 
 
 stationaryDetector.prototype.reset=function(){
+  this.lastIAggr = -1;
   this.iAggr=0;
+  this.mycars=[];
   this.historyFlow=[];
   this.historySpeed=[];
   this.historyFlow[0]=0;
@@ -86,7 +89,7 @@ stationaryDetector.prototype.reset=function(){
 
 
 stationaryDetector.prototype.display=function(textsize){
-    console.log("in stationaryDetector.display(textsize)");
+   // console.log("in stationaryDetector.display(textsize)");
  
   ctx.font=textsize+'px Arial';
 
@@ -110,9 +113,20 @@ stationaryDetector.prototype.display=function(textsize){
     var boxWidth=8.2*textsize;
     var boxHeight=2.4*textsize;
 
+    var loc = xPixCenter+","+yPixCenter;
+    
+	if(this.lastIAggr != this.iAggr){
+		this.mycars.splice(0,this.mycars.length);
+		this.lastIAggr = this.iAggr;
+	}
+
+	if(this.mycars.indexOf(loc) == -1){
+
 	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
-	"("+xPixCenter+","+yPixCenter+")"+ "\n" +flowStr + speedStr;
-    // the detector line
+	"("+loc+")"+ "\n" +flowStr + speedStr+ "this.iAggr:"+this.iAggr;
+	this.mycars.push(loc);
+	}
+		// the detector line
 
     var detLineWidth=0.2;    // [m]
     var detLineDist=2;     // dist of the loops of double-loop detector [m]
