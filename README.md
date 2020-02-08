@@ -8,7 +8,7 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
 - add download function
 - optimize memory usage
 
-<!--put it from textbox to another area or use new data structures to store data-->
+<!--or change data after a period of time put it from textbox to another area or use new data structures to store data, use anotger local variable to monitor what should be in the textarea and tge text area only represent this variable-->
 
 ## Running the Simulation
 
