@@ -4077,7 +4077,40 @@ road.prototype.removeObstacle= function(id) {
 }
 
 
+var funDownload = function (content, filename) {
+    var eleLink = document.createElement('a');
+    eleLink.download = filename;
+    eleLink.style.display = 'none';
+    var blob = new Blob([content]);
+    eleLink.href = URL.createObjectURL(blob);
+    document.body.appendChild(eleLink);
+    eleLink.click();
+    document.body.removeChild(eleLink);
+};
 
+var eleTextarea = document.getElementById('testarea_1');
+var eleButton = document.getElementById('button_car');
 
+if ('download' in document.createElement('a')) {
+	eleButton.addEventListener('click', function () {
+		funDownload(eleTextarea.value, 'test.txt');	
+	});
+} else {
+	eleButton.onclick = function () {
+		alert('Browser doesn\'t support!');	
+	};
+}
 
+var eleTextarea1 = document.getElementById('testarea_2');
+var eleButton1 = document.getElementById('button_statistic');
+
+if ('download' in document.createElement('a')) {
+	eleButton1.addEventListener('click', function () {
+		funDownload(eleTextarea1.value, 'test.txt');	
+	});
+} else {
+	eleButton1.onclick = function () {
+		alert('Browser doesn\'t support!');	
+	};
+}
 
