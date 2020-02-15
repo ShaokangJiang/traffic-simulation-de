@@ -10,8 +10,8 @@ Source code for the interactive Javascript simulation at  [www.traffic-simulatio
   - lane -- which road this car is on
   - u -- distance from start point
   - rType -- type of road(main road or ramp or others)
-- download as csv
-- optimize memory usage -- upper bound limits for cars area
+- download as csv (Has maximum size)
+- optimize running speed -- upper bound limits for cars and statistic area. So the output textarea is for small amount of data demo only.
 
 <!--or change data after a period of time put it from textbox to another area or use new data structures to store data, use anotger local variable to monitor what should be in the textarea and tge text area only represent this variable https://segmentfault.com/q/1010000006205674-->
 
