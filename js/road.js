@@ -7,7 +7,7 @@
 //console.log(Math.random());          //s Always 0.9364577392619949 with 42
 Math.seedrandom(44); // !! re-start reproducibly (undo console logs)
 
-
+var textarea_cars = [];
 
 
 
@@ -137,7 +137,7 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
   this.lastTime = -5;
   this.waitTime = 5;
   this.textarea = [];
-  this.textarea_cars = [];
+  textarea_cars = [];
   this.initRegularVehicles(densInitPerLane,fracTruck);
 /*
     var nveh=Math.floor(this.nLanes*this.roadLen*densInitPerLane);
@@ -241,7 +241,7 @@ road.prototype.initRegularVehicles=function(densityPerLane,fracTruck){
 	  this.lastTime = -5;         
 	this.waitTime = 5; 
 	this.textarea = [];
-	this.textarea_cars = [];
+	textarea_cars = [];
 document.getElementById("testarea_1").value = "";
 	document.getElementById("testarea_2").value = "";
   for(var i=0; i<nvehPlus; i++){
@@ -2176,10 +2176,10 @@ road.prototype.updateSpeedPositions=function(rType){
       this.veh[i].u -= this.roadLen;
     }
 	  var a = document.getElementById("time_exchange").value;
-	this.textarea_cars.push(a+","+rType+","+this.veh[i].id+","+Math.round(3.6*this.veh[i].speed)+","+this.veh[i].lane+","+this.veh[i].u);
+	textarea_cars.push(a+","+rType+","+this.veh[i].id+","+Math.round(3.6*this.veh[i].speed)+","+this.veh[i].lane+","+this.veh[i].u+"\n");
 	 
-	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
-	 if(document.getElementById("testarea_1").length<this.maxLengthTextarea){
+	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " u:"+this.veh[i].u);
+	 if(document.getElementById("testarea_1").value.length<this.maxLengthTextarea){
 	  if(a-this.lastTime>this.waitTime){ 
 	  document.getElementById("testarea_1").value += this.textarea.toString();
 	this.textarea.length = 0;
@@ -4099,7 +4099,7 @@ var eleButton = document.getElementById('button_car');
 
 if ('download' in document.createElement('a')) {
 	eleButton.addEventListener('click', function () {
-		funDownload(this.textarea_cars.toString(), 'cars.csv');	
+		funDownload("Time,rType,id,Speed,lane,u" +textarea_cars.toString(), 'cars.csv');	
 	});
 } else {
 	eleButton.onclick = function () {
