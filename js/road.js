@@ -132,11 +132,12 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
     // u=long logical coordinate; i=0: first vehicle=maximum u
     // =(n-1)/n*roadLen
     // lane or v is transversal coordinate
-
+  this.maxLengthTextarea = 50000;
   this.veh=[];
   this.lastTime = -5;
   this.waitTime = 5;
   this.textarea = [];
+  this.textarea_cars = [];
   this.initRegularVehicles(densInitPerLane,fracTruck);
 /*
     var nveh=Math.floor(this.nLanes*this.roadLen*densInitPerLane);
@@ -240,6 +241,9 @@ road.prototype.initRegularVehicles=function(densityPerLane,fracTruck){
 	  this.lastTime = -5;         
 	this.waitTime = 5; 
 	this.textarea = [];
+	this.textarea_cars = [];
+document.getElementById("testarea_1").value = "";
+	document.getElementById("testarea_2").value = "";
   for(var i=0; i<nvehPlus; i++){
 
         // position trucks mainly on the right lane nLanes-1
@@ -2172,12 +2176,15 @@ road.prototype.updateSpeedPositions=function(rType){
       this.veh[i].u -= this.roadLen;
     }
 	  var a = document.getElementById("time_exchange").value;
-
-	  this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
-	 if(a-this.lastTime>this.waitTime){ 
+	this.textarea_cars.push(a+","+rType+","+this.veh[i].id+","+Math.round(3.6*this.veh[i].speed)+","+this.veh[i].lane+","+this.veh[i].u);
+	 
+	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " v: "+this.veh[i].v+ " u:"+this.veh[i].u);
+	 if(document.getElementById("testarea_1").length<this.maxLengthTextarea){
+	  if(a-this.lastTime>this.waitTime){ 
 	  document.getElementById("testarea_1").value += this.textarea.toString();
 	this.textarea.length = 0;
 	 this.lastTime= a;
+	 }
 	 }
 	 }
 
@@ -4088,12 +4095,11 @@ var funDownload = function (content, filename) {
     document.body.removeChild(eleLink);
 };
 
-var eleTextarea = document.getElementById('testarea_1');
 var eleButton = document.getElementById('button_car');
 
 if ('download' in document.createElement('a')) {
 	eleButton.addEventListener('click', function () {
-		funDownload(eleTextarea.value, 'test.txt');	
+		funDownload(this.textarea_cars.toString(), 'cars.csv');	
 	});
 } else {
 	eleButton.onclick = function () {
@@ -4101,12 +4107,11 @@ if ('download' in document.createElement('a')) {
 	};
 }
 
-var eleTextarea1 = document.getElementById('testarea_2');
 var eleButton1 = document.getElementById('button_statistic');
 
 if ('download' in document.createElement('a')) {
 	eleButton1.addEventListener('click', function () {
-		funDownload(eleTextarea1.value, 'test.txt');	
+		funDownload(this.textarea_statistics.toString(), 'statistic.csv');	
 	});
 } else {
 	eleButton1.onclick = function () {

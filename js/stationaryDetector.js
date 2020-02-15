@@ -35,6 +35,7 @@ this.mycars=[];
     this.historySpeed=[];
     this.historyFlow[0]=0;
     this.historySpeed[0]=0;
+	this.textarea_statistics = [];
     this.vehCount=0; // counting inside each aggregation interval (all lanes)
     this.speedSum=0; // summing inside each aggregation interval
     this.nLanes=this.road.nLanes;
@@ -83,7 +84,8 @@ stationaryDetector.prototype.reset=function(){
   this.historySpeed=[];
   this.historyFlow[0]=0;
   this.historySpeed[0]=0;
-  this.vehCount=0; // counting inside each aggregation interval (all lanes)
+  this.textarea_statistics = [];
+	this.vehCount=0; // counting inside each aggregation interval (all lanes)
   this.speedSum=0; // summing inside each aggregation interval
 }
 
@@ -93,12 +95,11 @@ stationaryDetector.prototype.display=function(textsize){
  
   ctx.font=textsize+'px Arial';
 
-  var flowStr="Flow: "+Math.round(3600*this.historyFlow[this.iAggr])
-    +" veh/h";
-  var speedStr="Speed: "+((this.historyFlow[this.iAggr]>0)
-			  ? Math.round(3.6*this.historySpeed[this.iAggr])
-			  : "--")
-	+" km/h"; 
+	var temp_speed =((this.historyFlow[this.iAggr]>0) ? Math.round(3.6*this.historySpeed[this.iAggr]): "--"); 
+	var temp_flow = Math.round(3600*this.historyFlow[this.iAggr]);
+
+  var flowStr="Flow: "+ temp_flow +" veh/h";
+  var speedStr="Speed: "+temp_speed +" km/h"; 
 
     var phi=this.road.get_phi(this.u);
     var cphi=Math.cos(phi);
@@ -121,10 +122,11 @@ stationaryDetector.prototype.display=function(textsize){
 	}
 
 	if(this.mycars.indexOf(loc) == -1){
-
+	var temp = document.getElementById("time_exchange").value;
 	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
-	"\n"+ "Time: "+ document.getElementById("time_exchange").value+ " "+"("+loc+")" +flowStr+" " + speedStr;
+	"\n"+ "Time: "+ temp + " "+"("+loc+")" +flowStr+" " + speedStr;
 	this.mycars.push(loc);
+	this.textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed);
 	}
 		// the detector line
 
