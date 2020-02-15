@@ -2,10 +2,16 @@
 Source code for the interactive Javascript simulation at  [www.traffic-simulation.de](http://www.traffic-simulation.de)
 
 ## TODO
-- direction of vehicles
-- clean file not need
-- add download function
-- optimize memory usage
+- Modify Readme file and discuss more function
+
+## Functions: 
+
+- direction/position of vehicles <lane,u,rType> (One road only have one direction) 
+  - lane -- which road this car is on
+  - u -- distance from start point
+  - rType -- type of road(main road or ramp or others)
+- download as csv
+- optimize memory usage -- upper bound limits for cars area
 
 <!--or change data after a period of time put it from textbox to another area or use new data structures to store data, use anotger local variable to monitor what should be in the textarea and tge text area only represent this variable https://segmentfault.com/q/1010000006205674-->
 
@@ -75,7 +81,7 @@ Any object has one of two states at any time specified by the object's
 data element `isActive`:
 
 * `traffObj.isActive=true`: The object is on the road:
- 
+
    - in case of obstacles or traffic lights, real or 
      virtual vehicle objects are added to the road at dropping time 
    - in case of speed limits, no new objects are generated but the vehicle's
@@ -87,7 +93,7 @@ data element `isActive`:
 
 
 The traffic light and speed limit objects also have values:
-  
+
   - `traffObj.value="red"` or `"green"` (if `traffObj.type==='trafficLight'`)
   - `traffObj.value=limit_kmh` (if `traffObj.type==='speedLimit'`)
   - `traffObj.value="null"` (if `traffObj.type==='obstacle'`)
@@ -194,7 +200,7 @@ in the main simulation file of the given scenario (```ring.js```,
   Models_ at ```traffic-simulation.de```
 
 
- 
+
 ## Graphics
 
 The drawing is essentially based on images:
