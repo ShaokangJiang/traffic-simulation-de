@@ -4107,15 +4107,3 @@ if ('download' in document.createElement('a')) {
 	};
 }
 
-var eleButton1 = document.getElementById('button_statistic');
-
-if ('download' in document.createElement('a')) {
-	eleButton1.addEventListener('click', function () {
-		funDownload(this.textarea_statistics.toString(), 'statistic.csv');	
-	});
-} else {
-	eleButton1.onclick = function () {
-		alert('Browser doesn\'t support!');	
-	};
-}
-

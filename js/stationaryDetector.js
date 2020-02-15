@@ -126,7 +126,7 @@ stationaryDetector.prototype.display=function(textsize){
 	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
 	"\n"+ "Time: "+ temp + " "+"("+loc+")" +flowStr+" " + speedStr;
 	this.mycars.push(loc);
-	this.textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed);
+	this.textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed+"\n");
 	}
 		// the detector line
 
@@ -158,6 +158,16 @@ stationaryDetector.prototype.display=function(textsize){
     ctx.fillText(speedStr,xPixCenter-0.46*boxWidth,yPixCenter+0.4*boxHeight);
 }
 
+var eleButton1 = document.getElementById('button_statistic');
 
+if ('download' in document.createElement('a')) {
+		eleButton1.addEventListener('click', function () {
+					funDownload(this.textarea_statistics.toString(), 'statistic.csv');	
+				});
+} else {
+		eleButton1.onclick = function () {
+					alert('Browser doesn\'t support!');	
+				};
+}
 
 
