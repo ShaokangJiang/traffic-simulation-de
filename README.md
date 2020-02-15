@@ -1,15 +1,16 @@
-# traffic-simulation.de
-Source code for the interactive Javascript simulation at  [www.traffic-simulation.de](http://www.traffic-simulation.de)
+# traffic-simulation.shaokang.ga
+Modified version of Source code for the interactive Javascript simulation at  [traffic-simulation.shaokang.ga](https://traffic-simulation.shaokang.ga/)
 
 ## TODO
 - Modify Readme file and discuss more function
 
-## Functions: 
-
-- direction/position of vehicles <lane,u,rType> (One road only have one direction) 
-  - lane -- which road this car is on
-  - u -- distance from start point
-  - rType -- type of road(main road or ramp or others)
+## Added Functions: 
+- Delete multi language part
+- Show the data for each car/statistic sign dynamically(up to 500000 chars)
+  - direction/position of vehicles <lane,u,rType> (One road only have one direction) 
+    - lane -- which road this car is on
+    - u -- distance from start point
+    - rType -- type of road(main road or ramp or others)
 - download as csv (Has maximum size)
 - optimize running speed -- upper bound limits for cars and statistic area. So the output textarea is for small amount of data demo only.
 
