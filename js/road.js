@@ -65,7 +65,7 @@ NOTICE all vehicles are constructed w/o specific models
 
 NOTICE2 (MT-2019-09): veh models individual copies if deepCopying=true
 */
-
+var lastTime = -5;
 var deepCopying=true;
 
 function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
@@ -134,7 +134,7 @@ function road(roadID,roadLen,laneWidth,nLanes,traj_x,traj_y,
     // lane or v is transversal coordinate
   this.maxLengthTextarea = 50000;
   this.veh=[];
-  this.lastTime = -5;
+  lastTime = -5;
   this.waitTime = 5;
   this.textarea = [];
   textarea_cars = [];
@@ -238,11 +238,11 @@ road.prototype.initRegularVehicles=function(densityPerLane,fracTruck){
   var nVehOld=this.veh.length;
   var vehPlus=[];
   var iveh=0;
-	  this.lastTime = -5;         
-	this.waitTime = 5; 
+	lastTime = -5;         
 	this.textarea = [];
 	textarea_cars = [];
-document.getElementById("testarea_1").value = "";
+	document.getElementById("time_exchange").value = 0;
+	document.getElementById("testarea_1").value = "";
 	document.getElementById("testarea_2").value = "";
   for(var i=0; i<nvehPlus; i++){
 
@@ -2180,10 +2180,10 @@ road.prototype.updateSpeedPositions=function(rType){
 	 
 	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " u:"+this.veh[i].u);
 	 if(document.getElementById("testarea_1").value.length<this.maxLengthTextarea){
-	  if(a-this.lastTime>this.waitTime){ 
+	  if(a-lastTime>this.waitTime){ 
 	  document.getElementById("testarea_1").value += this.textarea.toString();
 	this.textarea.length = 0;
-	 this.lastTime= a;
+	 lastTime= a;
 	 }
 	 }
 	 }
