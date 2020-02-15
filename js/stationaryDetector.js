@@ -164,7 +164,11 @@ var eleButton1 = document.getElementById('button_statistic');
 
 if ('download' in document.createElement('a')) {
 		eleButton1.addEventListener('click', function () {
-					funDownload("Time," + "loc_x," + "loc_y," + "flow," + "Speed\n" +textarea_statistics.toString(), 'statistic.csv');	
+			var passValue = "Time," + "loc_x," + "loc_y," + "flow," + "Speed\n";		
+			for (i = 0; i < textarea_statistics.length; i++) {
+				  passValue += textarea_statistics[i];
+			}
+			funDownload(passValue , 'statistic.csv');	
 				});
 } else {
 		eleButton1.onclick = function () {

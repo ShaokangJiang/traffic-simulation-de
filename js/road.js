@@ -4099,7 +4099,11 @@ var eleButton = document.getElementById('button_car');
 
 if ('download' in document.createElement('a')) {
 	eleButton.addEventListener('click', function () {
-		funDownload("Time,rType,id,Speed,lane,u" +textarea_cars.toString(), 'cars.csv');	
+		var passValue = "Time,rType,id,Speed,lane,u\n";
+		for (i = 0; i < textarea_cars.length; i++) {
+			  passValue += textarea_cars[i];
+		}
+		funDownload(passValue , 'cars.csv');	
 	});
 } else {
 	eleButton.onclick = function () {
