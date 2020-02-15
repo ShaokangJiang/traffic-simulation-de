@@ -38,6 +38,7 @@ this.mycars=[];
     this.historyFlow[0]=0;
     this.historySpeed[0]=0;
     textarea_statistics = [];
+    this.totalCarLim = 50000;
     this.vehCount=0; // counting inside each aggregation interval (all lanes)
     this.speedSum=0; // summing inside each aggregation interval
     this.nLanes=this.road.nLanes;
@@ -125,8 +126,10 @@ stationaryDetector.prototype.display=function(textsize){
 
 	if(this.mycars.indexOf(loc) == -1){
 	var temp = document.getElementById("time_exchange").value;
-	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
+	if(document.getElementById("testarea_2").value.length<this.totalCarLim){
+		document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
 	"\n"+ "Time: "+ temp + " "+"("+loc+")" +flowStr+" " + speedStr;
+	}
 	this.mycars.push(loc);
 	textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed+"\n");
 	}

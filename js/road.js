@@ -2176,9 +2176,9 @@ road.prototype.updateSpeedPositions=function(rType){
       this.veh[i].u -= this.roadLen;
     }
 	  var a = document.getElementById("time_exchange").value;
-	textarea_cars.push(a+","+rType+","+this.veh[i].id+","+Math.round(3.6*this.veh[i].speed)+","+this.veh[i].lane+","+this.veh[i].u+"\n");
+	textarea_cars.push(a+","+rType+","+this.veh[i].id+","+Math.round(3.6*this.veh[i].speed)+","+this.veh[i].lane+","+this.veh[i].u.toFixed(3)+"\n");
 	 
-	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " u:"+this.veh[i].u);
+	this.textarea.push("\nTime: "+ a+ " rType: "+rType +" id: "+ this.veh[i].id + "Speed: "+ Math.round(3.6*this.veh[i].speed) + " lane:" + this.veh[i].lane + " u:"+this.veh[i].u.toFixed(5));
 	 if(document.getElementById("testarea_1").value.length<this.maxLengthTextarea){
 	  if(a-lastTime>this.waitTime){ 
 	  document.getElementById("testarea_1").value += this.textarea.toString();
