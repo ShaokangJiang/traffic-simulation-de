@@ -14,6 +14,8 @@ microscopic output also gives the lane index of the passage event
 @param dtAggr:        aggregation time [s] of the macroscopic output
 */
 
+var textarea_statistics = [];
+
 function stationaryDetector(road,u,dtAggr){
     console.log("in stationaryDetector cstr: road=",road);
     this.road=road;
@@ -35,7 +37,7 @@ this.mycars=[];
     this.historySpeed=[];
     this.historyFlow[0]=0;
     this.historySpeed[0]=0;
-	this.textarea_statistics = [];
+    textarea_statistics = [];
     this.vehCount=0; // counting inside each aggregation interval (all lanes)
     this.speedSum=0; // summing inside each aggregation interval
     this.nLanes=this.road.nLanes;
@@ -84,7 +86,7 @@ stationaryDetector.prototype.reset=function(){
   this.historySpeed=[];
   this.historyFlow[0]=0;
   this.historySpeed[0]=0;
-  this.textarea_statistics = [];
+  textarea_statistics = [];
 	this.vehCount=0; // counting inside each aggregation interval (all lanes)
   this.speedSum=0; // summing inside each aggregation interval
 }
@@ -126,7 +128,7 @@ stationaryDetector.prototype.display=function(textsize){
 	document.getElementById("testarea_2").value = document.getElementById("testarea_2").value +
 	"\n"+ "Time: "+ temp + " "+"("+loc+")" +flowStr+" " + speedStr;
 	this.mycars.push(loc);
-	this.textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed+"\n");
+	textarea_statistics.push(temp+","+loc+","+temp_flow+","+temp_speed+"\n");
 	}
 		// the detector line
 
@@ -162,7 +164,7 @@ var eleButton1 = document.getElementById('button_statistic');
 
 if ('download' in document.createElement('a')) {
 		eleButton1.addEventListener('click', function () {
-					funDownload(this.textarea_statistics.toString(), 'statistic.csv');	
+					funDownload("Time," + "loc_x," + "loc_y," + "flow," + "Speed\n" +textarea_statistics.toString(), 'statistic.csv');	
 				});
 } else {
 		eleButton1.onclick = function () {
